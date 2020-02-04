@@ -39,13 +39,14 @@ type Client struct {
 
 	resource resource
 
-	Application *ApplicationResource
-	Group       *GroupResource
-	LogEvent    *LogEventResource
-	Policy      *PolicyResource
-	Session     *SessionResource
-	User        *UserResource
-	Factor      *FactorResource
+	Application      *ApplicationResource
+	Group            *GroupResource
+	LogEvent         *LogEventResource
+	Policy           *PolicyResource
+	Session          *SessionResource
+	User             *UserResource
+	Factor           *FactorResource
+	OktaSignOnPolicy *OktaSignOnPolicyResource
 }
 
 type resource struct {
@@ -96,6 +97,7 @@ func NewClient(ctx context.Context, conf ...ConfigSetter) (*Client, error) {
 	c.Session = (*SessionResource)(&c.resource)
 	c.User = (*UserResource)(&c.resource)
 	c.Factor = (*FactorResource)(&c.resource)
+	c.OktaSignOnPolicy = (*OktaSignOnPolicyResource)(&c.resource)
 	return c, nil
 }
 
